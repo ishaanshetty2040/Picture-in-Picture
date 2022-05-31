@@ -8,11 +8,20 @@ async function selectMediaStream() {
         videoElement.srcObject = mediaStream;
         videoElement.onloadedmetadata = () => {
             videoElement.play();
-        }
+        };
     } catch (error) {
-        //Catch error
+        // Catch Error Here
     }
 }
+
+button.addEventListener('click', async () => {
+    //Disable Button
+    button.disabled = true;
+    //Start Picture in picture
+    await videoElement.requestPictureInPicture();
+    //Reset button
+    button.disabled = false;
+});
 
 //On load
 selectMediaStream();
